@@ -1,11 +1,5 @@
 import Notiflix from 'notiflix';
 
-Notiflix.Notify.init({
-  position: 'center-top',
-  fontSize: '16px',
-  useIcon: false,
-});
-
 const formRef = document.querySelector('.form');
 const labelsRef = document.getElementsByTagName('label');
 const btnSubmitsRef = document.getElementsByTagName('button');
