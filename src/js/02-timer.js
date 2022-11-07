@@ -1,5 +1,5 @@
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.min.css";
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 
 const flatpickr = require("flatpickr");
 
@@ -33,13 +33,16 @@ function onBtnStart() {
     timer.start();
 }
 
+
 const timerRef = document.querySelector('.timer');
+// console.log(timerRef);
 
 const timer = {
     intervalId: null,
     refs: {},
     start(rootSelector, deadline) {
         const delta = timerDeadline - Date.now();
+        // console.log(delta);
         this.getRefs(rootSelector);
         this.intervalId = setInterval(() => {
             const delta = timerDeadline - Date.now();
@@ -49,6 +52,7 @@ const timer = {
             };
             
             const data = this.convertMs(delta);
+            // console.log(data);
             this.refs.days.textContent = this.addLeadinZero(data.days);
             this.refs.hours.textContent = this.addLeadinZero(data.hours);
             this.refs.minutes.textContent = this.addLeadinZero(data.minutes);
@@ -60,6 +64,7 @@ const timer = {
         this.refs.hours = rootSelector.querySelector('[data-hours]');
         this.refs.minutes = rootSelector.querySelector('[data-minutes]');
         this.refs.seconds = rootSelector.querySelector('[data-seconds]');
+        // console.log(this.refs);
     },
 
     convertMs(delta) {
