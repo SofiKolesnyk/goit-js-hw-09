@@ -51,6 +51,12 @@ formRef.addEventListener('submit', event => {
     delayValue += stepValue;
   }
 });
+function verifyAllInputs() { 
+  const someEmpty = 
+  delay.value === '' 
+   step.value === ''  
+   amount.value === ''; 
+}
 
 inputDelayRef[0].addEventListener('input', () => {
   verifyAllInputs();
