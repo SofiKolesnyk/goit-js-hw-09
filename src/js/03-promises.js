@@ -6,10 +6,7 @@ const btnSubmitsRef = document.getElementsByTagName('button');
 const inputDelayRef = document.getElementsByName('delay');
 const inputStepRef = document.getElementsByName('step');
 const inputAmountRef = document.getElementsByName('amount');
-
-const {
-  elements: { delay, step, amount },
-} = formRef;
+const { elements: { delay, step, amount },} = formRef;
 
 const onSuccess = (position, delay) => {
   Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -24,7 +21,6 @@ function createPromise(position, delay) {
     setTimeout(() => {
       const shouldResolve = Math.random() > 0.3;
       const obj = { position, delay };
-
       if (shouldResolve) {
         // Fulfill
         resolve(obj);
@@ -47,15 +43,13 @@ formRef.addEventListener('submit', event => {
     createPromise(position, delayValue)
       .then(res => onSuccess(res.position, res.delay))
       .catch(error => onReject(error.position, error.delay));
-
     delayValue += stepValue;
   }
 });
+
 function verifyAllInputs() { 
   const someEmpty = 
-  delay.value === '' 
-   step.value === ''  
-   amount.value === ''; 
+  delay.value === '' || step.value === '' || amount.value === ''; 
 }
 
 inputDelayRef[0].addEventListener('input', () => {
